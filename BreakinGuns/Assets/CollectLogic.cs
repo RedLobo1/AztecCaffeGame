@@ -27,6 +27,10 @@ public class CollectLogic : MonoBehaviour
         if (collision.transform.tag == "Player")
         {
             Dictionary<string,bool> ColorsD = collision.gameObject.GetComponent<CollectingLimit>().ColorsDictionary;
+            CollectingLimit pCollectingLogic = collision.gameObject.GetComponent<CollectingLimit>();
+
+            if (pCollectingLogic.CanCollect == false) return;
+
             AddToCollected(ColorsD, collision);
             StartCoroutine(Collected());
         }

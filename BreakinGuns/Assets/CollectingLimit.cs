@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CollectingLimit : MonoBehaviour
@@ -8,30 +9,35 @@ public class CollectingLimit : MonoBehaviour
     CharacterControl2D characterControl;
     public GunShotLogic ShotLogic;
     public bool CanCollect;
-    
+
+    private bool _allTrue;
 
     public Dictionary<string, bool> ColorsDictionary = new Dictionary<string, bool>(); //add to this in another level setup script
 
     private void Awake()
     {
-        //temp
-        ColorsDictionary.Add("Red", false);
-        ColorsDictionary.Add("Green", false);
-        ColorsDictionary.Add("Blue", false);
 
         characterControl = gameObject.GetComponent<CharacterControl2D>();
+        ShotLogic.ResetShootingLogic += CharacterControl_ResetShootingLogic;
     }
+
+    private void CharacterControl_ResetShootingLogic(object sender, EventArgs e)
+    {
+        ColorsDictionary["Blue"] = false;
+        ColorsDictionary["Green"] = false;
+        ColorsDictionary["Red"] = false;
+    }
+
     private void Update()
     {
-        bool allTrue = true;
-
-        if (ShotLogic.Shot)
+        if (Input.GetKeyDown(KeyCode.Q))
         {
-            //temp
-            ColorsDictionary["Blue"] = false;
-            ColorsDictionary["Green"] = false;
-            ColorsDictionary["Red"] = false;
+            DebugThis();
         }
+
+        bool allTrue = true;
+        _allTrue = allTrue;
+
 
         foreach (KeyValuePair<string, bool> pair in ColorsDictionary) //megnézzük hogy igazak e mind
         {
@@ -52,6 +58,14 @@ public class CollectingLimit : MonoBehaviour
         {
             characterControl.CanShoot = false;
             CanCollect = true;
+        }
+    }
+
+    private void DebugThis()
+    {
+        foreach (KeyValuePair<string, bool> pair in ColorsDictionary) //megnézzük hogy igazak e mind
+        {
+            Debug.Log($"{pair.Key} has {pair.Value}");
         }
     }
 }

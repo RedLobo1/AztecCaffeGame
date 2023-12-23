@@ -1,14 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.Experimental.GraphView;
+using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class GunShotLogic : MonoBehaviour
 {
     [SerializeField] public bool Shot;
     [SerializeField] public bool Ready;
-    [SerializeField] private bool _gunCollected;
+    //[SerializeField] private bool _gunCollected;
+    public event EventHandler ResetShootingLogic;
     [SerializeField] private float _explosionStrength;
 
     [SerializeField] private SpriteRenderer _gunVisual;
@@ -29,12 +28,12 @@ public class GunShotLogic : MonoBehaviour
         _gunVisual.enabled = Ready;
         if (Shot)
         {
-
             SpawnParts();
             Explode();
             SpawnBullet();
             Shot = false;
             Ready = false;
+            ResetShootingLogic.Invoke(this, EventArgs.Empty);
         }
     }
 
@@ -43,7 +42,7 @@ public class GunShotLogic : MonoBehaviour
         Vector3 direction = _target.position - gameObject.transform.position;
         direction.Normalize();
 
-        GameObject bullet = Instantiate(_bullet, gameObject.transform.position + direction, Quaternion.identity);
+        GameObject bullet = Instantiate(_bullet, gameObject.transform.position, Quaternion.identity);
         bullet.GetComponent<Bullet>().Direction = direction;
     }
 

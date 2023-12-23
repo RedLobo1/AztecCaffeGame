@@ -6,7 +6,7 @@ using UnityEngine;
 public class CharacterControl2D : MonoBehaviour
 {
     public GunShotLogic GunLogic;
-
+    public GameLogic GameLogic;
     public Transform MousePosition;
 
     public bool CanShoot;
@@ -21,11 +21,11 @@ public class CharacterControl2D : MonoBehaviour
 
     private bool _dashing;
     private bool _shot;
-    private bool _aiming;
+    public bool Aiming;
 
     void Awake()
     {
-        _rb =GetComponent<Rigidbody2D>();   
+        _rb =GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -38,7 +38,7 @@ public class CharacterControl2D : MonoBehaviour
         CharacterDash();
         CharacterShoot();
 
-        if (_dashing || _aiming) return;
+        if (_dashing || Aiming) return;
         else
         {
             Time.timeScale = 1;
@@ -48,32 +48,35 @@ public class CharacterControl2D : MonoBehaviour
 
     private void CharacterShoot()
     {
-        if(!CanShoot) return;
+        if (Input.GetMouseButtonDown(1) && Aiming)
+        {
+            Aiming = false;
+            return;
+        }
+
+        if (!CanShoot) return;
         GunLogic.Ready = true;
-        if(Input.GetMouseButtonDown(1) && !_aiming)
+
+        if (Input.GetMouseButtonDown(1) && !Aiming)
         {
             Time.timeScale = _timeSlowScale;
             Time.fixedDeltaTime = Time.timeScale * .02f;
-            _aiming = true;
+            Aiming = true;
         }
-        if (Input.GetMouseButtonDown(0) && _aiming)
+        if (Input.GetMouseButtonDown(0) && Aiming)
         {
-            _shot = true;
             CalculateDirection();
             _rb.velocity = Vector2.zero;
-            _rb.AddForce(_dashDir * -10, ForceMode2D.Impulse);
-            _aiming = false;
-            GunLogic.Shot = _shot;
-        }
-        else
-        {
-            _shot = false;
+            _rb.AddForce(_dashDir * -2, ForceMode2D.Impulse);
+            Aiming = false;
+            GunLogic.Shot = true;
+            GameLogic.ShotEvent = true;
         }
     }
 
     private void CharacterDash()
     {
-        if (Input.GetMouseButtonDown(0) && !_aiming)
+        if (Input.GetMouseButtonDown(0) && !Aiming)
         {
             Debug.Log($"{MousePosition}");
             Debug.DrawLine(gameObject.transform.position, MousePosition.position);

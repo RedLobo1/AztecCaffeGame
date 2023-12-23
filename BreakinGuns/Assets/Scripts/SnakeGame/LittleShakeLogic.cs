@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LittleShakeLogic : MonoBehaviour
 {
-    public GameViewLogic GameViewLogic;
+    public GameLogic GameLogic;
 
     public float speed = 10f; // How fast the object shakes
     public float amount = 0.2f; // How much the object shakes
@@ -15,7 +15,7 @@ public class LittleShakeLogic : MonoBehaviour
     void Awake()
     {
         currentPosition = transform.position;
-        GameViewLogic.ShakeCameraEvent += ShakeCamera;
+        GameLogic.ImpactEvent += ShakeCamera;
     }
 
     void Update()
@@ -38,7 +38,7 @@ public class LittleShakeLogic : MonoBehaviour
 
         Camera.main.transform.position = new Vector3(currentPosition.x, currentPosition.y, Camera.main.transform.position.z);
 
-        Invoke("StopShake", 0.5f); // Stop shaking after half a second
+        Invoke("StopShake", 0.1f); // Stop shaking after half a second
     }
 
     private void StopShake()
