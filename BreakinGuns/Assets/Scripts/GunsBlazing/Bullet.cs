@@ -10,7 +10,7 @@ public class Bullet : MonoBehaviour
     [SerializeField] private GameObject _smoke;
 
     [SerializeField] public Vector3 Direction;
-    public TimeBrain Brain;
+    //public TimeBrain Brain;
 
     public int maxBounces = 2; // Set the maximum number of bounces
 
