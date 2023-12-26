@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5375417064219085516}
   - component: {fileID: 8918280412194384688}
   - component: {fileID: 8586790798030001158}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Particle system
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4899,7 +4899,8 @@ GameObject:
   - component: {fileID: 4836936633622523184}
   - component: {fileID: 3371716289196163515}
   - component: {fileID: 1517452161785344079}
-  m_Layer: 0
+  - component: {fileID: 2564578527698983699}
+  m_Layer: 7
   m_Name: PistolBullet
   m_TagString: Bullet
   m_Icon: {fileID: 0}
@@ -4991,6 +4992,8 @@ MonoBehaviour:
   _flash: {fileID: 3792545087643046458, guid: d18182c888b9f164c848ae74f6a93e9d, type: 3}
   _smoke: {fileID: 0}
   Direction: {x: 0, y: 0, z: 0}
+  Brain: {fileID: 8257760226561511818, guid: 1ba32abc495c1724dbe435987b98ad8f, type: 3}
+  maxBounces: 2
 --- !u!50 &3371716289196163515
 Rigidbody2D:
   serializedVersion: 4
@@ -5003,7 +5006,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.5
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0
@@ -5025,7 +5028,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9085043580989610309}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -5063,3 +5066,38 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.09, y: 0.1}
   m_EdgeRadius: 0
+--- !u!58 &2564578527698983699
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9085043580989610309}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: 25e7e0de9a5a4a04cb62498381bf3dfb, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 448
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 512
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 512
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.04
