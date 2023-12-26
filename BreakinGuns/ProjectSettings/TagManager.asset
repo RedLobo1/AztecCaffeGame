@@ -10,7 +10,6 @@ TagManager:
   - Gunpart Blue
   - Bullet
   - Wall
-  - Enemy
   layers:
   - Default
   - TransparentFX
