@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1478018191363761562}
   - component: {fileID: 412062634049470646}
   - component: {fileID: 5982800112558701633}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: MainCharacter
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -195,7 +195,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6765064359452116897}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -227,7 +227,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1656885621381201898}
   - component: {fileID: 4953621636581847}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: GunVIsual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -313,7 +313,7 @@ GameObject:
   - component: {fileID: 4926570664783298603}
   - component: {fileID: 8064922485739659578}
   - component: {fileID: 7994622451574266542}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: Gun
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -435,7 +435,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7178917984547228350}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: AgentCharacter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -467,7 +467,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8711886134353719982}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: CeilingCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -500,7 +500,7 @@ GameObject:
   - component: {fileID: 5667162078164343344}
   - component: {fileID: 3310748534101943643}
   - component: {fileID: 5467571286911920395}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
