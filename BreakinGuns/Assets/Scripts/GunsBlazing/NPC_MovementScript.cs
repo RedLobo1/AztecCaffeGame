@@ -6,6 +6,7 @@ using UnityEngine;
 public class NPC_MovementScript : MonoBehaviour
 {
     [SerializeField] private float _speed;
+    [SerializeField] private FieldOfView _fieldOfView;
     private bool _flip;
     public bool Flip
     {
@@ -32,6 +33,7 @@ public class NPC_MovementScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        _fieldOfView.SetOrigin(transform.position);
         Vector2 direction = MoveNPC();
 
         _rb.AddForce(direction * _speed);
