@@ -11,6 +11,9 @@ TagManager:
   - Bullet
   - Wall
   - Enemy
+  - Barrel
+  - Stock
+  - Sight
   layers:
   - Default
   - TransparentFX
@@ -23,6 +26,8 @@ TagManager:
   - GunPart
   - Wall
   - RayCheck
+  - Ladder
+  - EnemyWeakSpot
   - 
   - 
   - 
@@ -30,9 +35,7 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
+  - GunMod
   - 
   - 
   - 

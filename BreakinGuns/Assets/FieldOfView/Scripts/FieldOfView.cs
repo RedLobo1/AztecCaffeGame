@@ -7,10 +7,10 @@ public class FieldOfView : MonoBehaviour
     [SerializeField] private NPC_MovementScript _movementScript;
     private float fov;
 
-    private Mesh mesh;
-    private Vector3 origin;
-    private float startingAngle;
-    private float viewDistance;
+    [SerializeField] private Mesh mesh;
+    [SerializeField] private Vector3 origin;
+    [SerializeField] private float startingAngle;
+    [SerializeField] private float viewDistance;
 
     private void Start()
     {

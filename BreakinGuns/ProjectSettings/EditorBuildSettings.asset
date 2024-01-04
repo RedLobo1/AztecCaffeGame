@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/GunsBlazing.unity
+    path: Assets/Scenes/BreakinGuns/GunsBlazing.unity
     guid: da01ae67b3d358d43870a70f9a5ebe64
+  - enabled: 1
+    path: Assets/Scenes/BreakinGuns/UpgradeTable.unity
+    guid: 35db5e52ab655a646988d347289c0e5f
   m_configObjects: {}
