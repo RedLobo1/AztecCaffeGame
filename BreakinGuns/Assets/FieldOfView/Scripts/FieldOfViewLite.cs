@@ -76,7 +76,7 @@ public class FieldOfViewLite : MonoBehaviour
                     if (rayCastHitShooting.collider.gameObject.tag == "Player")
                     {
                         _shooting.CanShoot = true;
-                        Debug.Log("Shoot");
+                        
                     }
                     ShootVertex = rayCastHitShooting.point;
                 }

@@ -14,6 +14,7 @@ public class CollectLogic : MonoBehaviour
     [SerializeField]private float _invoulnerableSeconds;
 
     public WeaponPartColors weaponPartColor;
+    private bool _collected;
 
     void Awake()
     {
@@ -38,9 +39,12 @@ public class CollectLogic : MonoBehaviour
             Dictionary<string,bool> ColorsD = collision.gameObject.GetComponent<CollectingLimit>().ColorsDictionary;
             CollectingLimit pCollectingLogic = collision.gameObject.GetComponent<CollectingLimit>();
 
-            if (pCollectingLogic.CanCollect == false) return;
+            //if (pCollectingLogic.CanCollect == false) return;
 
-            AddToCollected(ColorsD, collision);
+            if (!_collected)
+            {
+                AddToCollected(ColorsD, collision);
+            }
             StartCoroutine(Collected());
         }
     }
@@ -51,32 +55,50 @@ public class CollectLogic : MonoBehaviour
         {
             ColorsD["Blue"] = true;
             Debug.Log("blue");
+            if (_uiGunLogic.BlueC)
+            {
+                CollectedExtraParts.Blue++;
+            }
             _uiGunLogic.BlueC = true;
         }
         else if (weaponPartColor == WeaponPartColors.Green)
         {
             ColorsD["Green"] = true;
             Debug.Log("green");
+            if (_uiGunLogic.GreenC)
+            {
+                CollectedExtraParts.Green++;
+            }
             _uiGunLogic.GreenC = true;
         }
         else if (weaponPartColor == WeaponPartColors.Red)
         {
             ColorsD["Red"] = true;
             Debug.Log("red");
+            if (_uiGunLogic.RedC)
+            {
+                CollectedExtraParts.Red++;
+            }
             _uiGunLogic.RedC = true;
         }
         else if (weaponPartColor == WeaponPartColors.Yellow)
         {
-            //TODO> IMPLEMENT BLOCK
+            //ColorsD["Yellow"] = true;
+            //// Debug.Log("red");
+            //_uiGunLogic.YellowC = true;
         }
         else if (weaponPartColor == WeaponPartColors.Pruple)
         {
-            //TODO> IMPLEMENT BLOCK
+            //ColorsD["Purple"] = true;
+            //// Debug.Log("red");
+            //_uiGunLogic.PurpleC = true;
         }
         else if (weaponPartColor == WeaponPartColors.Brown)
         {
             //TODO> IMPLEMENT BLOCK
         }
+
+        _collected = true;
         collision.gameObject.GetComponent<CollectingLimit>().ColorsDictionary = ColorsD;
     }
 

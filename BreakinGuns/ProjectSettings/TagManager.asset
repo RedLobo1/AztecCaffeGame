@@ -14,6 +14,7 @@ TagManager:
   - Barrel
   - Stock
   - Sight
+  - Mouse
   layers:
   - Default
   - TransparentFX

@@ -8,33 +8,58 @@ public class GunShotLogic : MonoBehaviour
 {
     [SerializeField] public bool Shot;
     [SerializeField] public bool Ready;
-    //[SerializeField] private bool _gunCollected;
+
     public event EventHandler ResetShootingLogic;
     [SerializeField] private float _explosionStrength;
 
+    [SerializeField] private BuildMods _buildMods;
     [SerializeField] private SpriteRenderer _gunVisual;
-    [SerializeField] private GameObject _bullet;
     [SerializeField] private CharacterControl2D Control;
-
     [SerializeField] private Transform _target;
 
     public GameObject[] Parts;
-    [SerializeField]private float _stopTime;
+    [SerializeField] private float _stopTime;
 
-    void Awake()
+    //EXTRA LOGIC MOD LOGIC
+
+    public Transform firePoint;
+    public GameObject bulletPrefab;
+    public float shotgunSpreadAngle = 15f;
+    public float chargeTime = 2f; // Time to charge for piercing shot
+    public float homingForce = 5f;
+    public float rapidFireRate = 0.1f;
+    public float BulletCount = 1f;
+
+    [SerializeField] private bool isRapidFiring = false;
+
+    private void Start()
     {
-        
+
+        /*if (bulletPrefab.GetComponent<PiercingBullet>() != null)
+        {
+            int BonusBullets = 1;
+            BulletCount += BonusBullets;
+        }
+        if (bulletPrefab.GetComponent<HomingBullet>() != null)
+        {
+            int BonusBullets = 0;
+            BulletCount += BonusBullets;
+        }*/
     }
 
     void Update()
     {
+        CheckMods();
+
         _gunVisual.enabled = Ready;
         if (Shot)
         {
-
             SpawnParts();
             Explode();
-            SpawnBullet();
+            Fire();
+
+            _buildMods.BuildModShotGun = false;
+            //Todo : add other mods here
             Shot = false;
             ResetShootingLogic.Invoke(this, EventArgs.Empty);
             StartCoroutine(StopTime());
@@ -42,17 +67,53 @@ public class GunShotLogic : MonoBehaviour
         }
     }
 
-    private void SpawnBullet()
+    private void CheckMods()
+    {
+        if (_buildMods.BuildModShotGun)
+        {
+            BulletCount = 4;
+        }
+    }
+
+    void Fire()
     {
         Vector3 direction = _target.position - gameObject.transform.position;
         direction.Normalize();
         Quaternion rotation = Quaternion.LookRotation(Vector3.forward, direction);
         rotation = Quaternion.Euler(0, 0, rotation.eulerAngles.z + 90f);
 
+        // Normal shot
+        for (int i = 0; i < BulletCount; i++)
+        {
+            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, rotation);
+            ApplyMods(bullet,chargeTime);
+        }
+    }
 
-        GameObject bullet = Instantiate(_bullet, gameObject.transform.position, rotation);
+    void ApplyMods(GameObject bullet, float chargeTime)
+    {
+        // Apply shotgun spread
+        if (_buildMods.BuildModShotGun)
+        {
+            bullet.GetComponent<ShotgunBullet>().enabled = true;
+            float angle = isRapidFiring ? 0f : shotgunSpreadAngle;
+            bullet.GetComponent<ShotgunBullet>().SetSpreadAngle(angle);
+        }
 
-        //bullet.GetComponent<Bullet>().Direction = direction;
+        // Apply piercing effect based on charge time
+        if (bullet.GetComponent<PiercingBullet>().isActiveAndEnabled == true)
+        {
+            bullet.GetComponent<PiercingBullet>().SetPiercingTime(chargeTime);
+            bullet.GetComponent<Collider2D>().isTrigger = true;
+        }
+
+        // Apply homing effect
+        if (bullet.GetComponent<HomingBullet>().isActiveAndEnabled == true)
+        {
+            bullet.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+        }
+
+        // Add more mods here
     }
 
     private void SpawnParts()
@@ -73,22 +134,12 @@ public class GunShotLogic : MonoBehaviour
                 // If there are no collisions, instantiate the part
                 if (colliders.Length == 0)
                 {
-                GameObject generatedPart = Instantiate(part, transform.position + randomLocation, Quaternion.Euler(0, 0, randomRotation));
-                break; // Exit the while loop
+                    GameObject generatedPart = Instantiate(part, transform.position + randomLocation, Quaternion.Euler(0, 0, randomRotation));
+                    break; // Exit the while loop
                 }
             }
         }
-
-        //foreach(var part in Parts)
-        //{
-        //    float randomRotation = Random.Range(0, 359);
-        //    Vector2 random = Random.insideUnitCircle;
-        //    Vector3 randomLocation = new Vector3(random.x, random.y, 0f);
-
-        //    GameObject generatedPart = Instantiate(part, transform.position + randomLocation,Quaternion.Euler(0,0, randomRotation));
-        //}
     }
-
     private void Explode()
     {
        Collider2D[] colliders2D = Physics2D.OverlapCircleAll(transform.position, 2f);

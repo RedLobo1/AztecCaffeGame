@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class GameViewLogic : MonoBehaviour
 {
-    GameStates Gamestate;
+   // GameStates Gamestate;
 
     public event EventHandler ShakeCameraEvent;
     public HandLogic HandLogic;
@@ -34,7 +34,7 @@ public class GameViewLogic : MonoBehaviour
         }
         if (HandLogic.StartedCutting == true)
         {
-            Gamestate = GameStates.Cutting;
+            //Gamestate = GameStates.Cutting;
             if(SnakeHeadBound.OutOfBound)
             {
                 ShakeCameraEvent.Invoke(this, EventArgs.Empty);
@@ -47,7 +47,7 @@ public class GameViewLogic : MonoBehaviour
         }
         else if (HandLogic.KnifeState == true)
         {
-            Gamestate = GameStates.Knife;
+           // Gamestate = GameStates.Knife;
             SnakeHead.color = new Color(0.5f,0.5f, 0.5f);
         }
 

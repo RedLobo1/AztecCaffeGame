@@ -1,9 +1,4 @@
-public enum GameStates
-{
-    NoKnife,
-    Knife,
-    Cutting
-}
+
 public enum WeaponPartColors
 {
     Blue,
@@ -13,10 +8,17 @@ public enum WeaponPartColors
     Pruple,
     Brown
 }
-
 public enum TimeStates
 {
     Normal,
     SlowDown,
     Stop,
 }
+
+public enum PlayerStates
+{
+    Normal,
+    Dead,
+    Win
+}
+

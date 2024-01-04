@@ -10,24 +10,63 @@ public class CollectingLimit : MonoBehaviour
     CharacterControl2D characterControl;
     public GunShotLogic ShotLogic;
     public bool CanCollect;
-
+    public InputMaster InputMaster;
     private bool _allTrue;
 
     public Dictionary<string, bool> ColorsDictionary = new Dictionary<string, bool>(); //add to this in another level setup script
 
+    private void OnEnable()
+    {
+        InputMaster.Player.Enable();
+    }
+
+    private void OnDisable()
+    {
+        InputMaster.Player.Disable();
+    }
     private void Awake()
     {
-
+        InputMaster = new InputMaster();
         characterControl = gameObject.GetComponent<CharacterControl2D>();
+        
         ShotLogic.ResetShootingLogic += CharacterControl_ResetShootingLogic;
     }
 
     private void CharacterControl_ResetShootingLogic(object sender, EventArgs e)
     {
-        ColorsDictionary["Blue"] = false;
-        ColorsDictionary["Green"] = false;
-        ColorsDictionary["Red"] = false;
-        UIGunLogic.Reset = true;
+        if (CollectedExtraParts.Green >= 2 && CollectedExtraParts.Blue >= 2 && CollectedExtraParts.Red >= 2)
+        {
+            ColorsDictionary["Blue"] = true;
+            ColorsDictionary["Green"] = true;
+            ColorsDictionary["Red"] = true;
+            CollectedExtraParts.Green--;
+            CollectedExtraParts.Blue--;
+            CollectedExtraParts.Red--;
+            UIGunLogic.Reset = true;
+        }
+        else
+        {
+            if (CollectedExtraParts.Green == 1)
+            {
+                ColorsDictionary["Green"] = false;
+            }
+            if (CollectedExtraParts.Red == 1)
+            {
+                
+                ColorsDictionary["Red"] = false;
+            }
+            if (CollectedExtraParts.Blue == 1)
+            {
+                
+                ColorsDictionary["Blue"] = false;
+            }
+
+            CollectedExtraParts.Red--;
+            CollectedExtraParts.Blue--;
+            CollectedExtraParts.Green--;
+
+            UIGunLogic.Reset = true;
+        }
     }
 
     private void Update()
@@ -36,6 +75,10 @@ public class CollectingLimit : MonoBehaviour
         bool allTrue = true;
         _allTrue = allTrue;
 
+        if (InputMaster.Player.Debug.triggered)
+        {
+            DebugThis();
+        }
 
         foreach (KeyValuePair<string, bool> pair in ColorsDictionary) //megnézzük hogy igazak e mind
         {
@@ -49,7 +92,7 @@ public class CollectingLimit : MonoBehaviour
         if (allTrue) //ha mind az összes fegyverdarab megvan
         {
             characterControl.CanShoot = true;
-            CanCollect = false;
+            //CanCollect = true;
 
         }
         else //ha nincs

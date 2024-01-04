@@ -5,33 +5,33 @@ using UnityEngine;
 public class UIGunLogic : MonoBehaviour
 {
     [SerializeField] private GameObject Red,Blue,Green;
-    public bool RedC,BlueC,GreenC;
+    public bool RedC,BlueC,GreenC,YellowC,PurpleC;
     public bool Reset;
     void Start()
     {
-        
+        RedC = true;
+        BlueC = true;
+        GreenC = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (RedC)
+        if (CollectedExtraParts.Red >= 1)
         {
             Red.SetActive(true);
         }
-        if (BlueC)
+        if (CollectedExtraParts.Blue >= 1)
         {
             Blue.SetActive(true);
         }
-        if (GreenC)
+        if (CollectedExtraParts.Green >= 1)
         {
             Green.SetActive(true);
         }
+        
         if (Reset)
         {
-            RedC = false;
-            BlueC = false;
-            GreenC = false;
             Red.SetActive(false);
             Blue.SetActive(false);
             Green.SetActive(false);

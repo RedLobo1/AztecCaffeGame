@@ -4987,7 +4987,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec488edfbf8405545af7797c4fc8cc3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 50
+  _speed: 25
   _rb: {fileID: 3371716289196163515}
   _flash: {fileID: 3792545087643046458, guid: d18182c888b9f164c848ae74f6a93e9d, type: 3}
   _smoke: {fileID: 0}

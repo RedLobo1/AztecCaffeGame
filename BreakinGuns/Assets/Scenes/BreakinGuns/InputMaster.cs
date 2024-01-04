@@ -53,6 +53,51 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Debug"",
+                    ""type"": ""Button"",
+                    ""id"": ""999db68a-cd42-4106-b960-206bc28399a1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""BuildModShotGun"",
+                    ""type"": ""Button"",
+                    ""id"": ""2d38148f-c4be-4445-bbb3-0c9f28fbffe0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""BuildPiercing"",
+                    ""type"": ""Button"",
+                    ""id"": ""11cbd018-d5ac-473f-b53c-75cb816accb8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""BuildBomb"",
+                    ""type"": ""Button"",
+                    ""id"": ""906c98cf-d7d1-4f93-b781-21545debc7cc"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ResetBuild"",
+                    ""type"": ""Button"",
+                    ""id"": ""0c35ed58-9531-47cf-905b-4cc016373d42"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -80,6 +125,17 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""f24d1300-9c9a-4f3d-8f95-a926bc9800ec"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""4876c656-8ef4-41ac-a23a-113c8e18d26b"",
                     ""path"": ""<XInputController>/leftTrigger"",
                     ""interactions"": """",
@@ -96,6 +152,17 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Xbox Control Scheme"",
+                    ""action"": ""Aim"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e6ce566d-bee8-4c13-826e-5721f3f4128e"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
                     ""action"": ""Aim"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -154,6 +221,138 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
                     ""action"": ""LookAround"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""2D VectorUp"",
+                    ""id"": ""526cccf0-b26a-4f4f-9da3-f6b22354336f"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LookAround"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""3b2d6a6e-a583-4d82-a70f-32fcc2a71fb8"",
+                    ""path"": ""<XInputController>/leftStick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LookAround"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""2d1b896f-0c8c-4dfa-84fd-83ed6e13c9de"",
+                    ""path"": ""<XInputController>/leftStick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LookAround"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""c81c6c13-5170-4793-86ca-714d308c1590"",
+                    ""path"": ""<XInputController>/leftStick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LookAround"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""e0bce85c-51a2-4137-8c91-12211b78e35b"",
+                    ""path"": ""<XInputController>/leftStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LookAround"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ceb4e432-7f60-4726-88e7-8b114b6e63b5"",
+                    ""path"": ""<XInputController>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Debug"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""efc372be-4637-4a86-a65e-5d626c6443f6"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Debug"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""30991a4b-d219-4408-8a00-e57d4454a41e"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Debug"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ea26daed-89fa-44f0-9440-1889a2334261"",
+                    ""path"": ""<XInputController>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""BuildModShotGun"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""18af656c-439d-40d6-9ef9-223fcc347df7"",
+                    ""path"": ""<XInputController>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""BuildPiercing"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a847f138-5725-4296-9644-f5a13d1cfbea"",
+                    ""path"": ""<XInputController>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""BuildBomb"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8ab0d088-3418-4187-9b5a-fc5a85a22534"",
+                    ""path"": ""<XInputController>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ResetBuild"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -177,6 +376,11 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
         m_Player_Shoot = m_Player.FindAction("Shoot", throwIfNotFound: true);
         m_Player_Aim = m_Player.FindAction("Aim", throwIfNotFound: true);
         m_Player_LookAround = m_Player.FindAction("LookAround", throwIfNotFound: true);
+        m_Player_Debug = m_Player.FindAction("Debug", throwIfNotFound: true);
+        m_Player_BuildModShotGun = m_Player.FindAction("BuildModShotGun", throwIfNotFound: true);
+        m_Player_BuildPiercing = m_Player.FindAction("BuildPiercing", throwIfNotFound: true);
+        m_Player_BuildBomb = m_Player.FindAction("BuildBomb", throwIfNotFound: true);
+        m_Player_ResetBuild = m_Player.FindAction("ResetBuild", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -241,6 +445,11 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Shoot;
     private readonly InputAction m_Player_Aim;
     private readonly InputAction m_Player_LookAround;
+    private readonly InputAction m_Player_Debug;
+    private readonly InputAction m_Player_BuildModShotGun;
+    private readonly InputAction m_Player_BuildPiercing;
+    private readonly InputAction m_Player_BuildBomb;
+    private readonly InputAction m_Player_ResetBuild;
     public struct PlayerActions
     {
         private @InputMaster m_Wrapper;
@@ -248,6 +457,11 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
         public InputAction @Shoot => m_Wrapper.m_Player_Shoot;
         public InputAction @Aim => m_Wrapper.m_Player_Aim;
         public InputAction @LookAround => m_Wrapper.m_Player_LookAround;
+        public InputAction @Debug => m_Wrapper.m_Player_Debug;
+        public InputAction @BuildModShotGun => m_Wrapper.m_Player_BuildModShotGun;
+        public InputAction @BuildPiercing => m_Wrapper.m_Player_BuildPiercing;
+        public InputAction @BuildBomb => m_Wrapper.m_Player_BuildBomb;
+        public InputAction @ResetBuild => m_Wrapper.m_Player_ResetBuild;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -266,6 +480,21 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
             @LookAround.started += instance.OnLookAround;
             @LookAround.performed += instance.OnLookAround;
             @LookAround.canceled += instance.OnLookAround;
+            @Debug.started += instance.OnDebug;
+            @Debug.performed += instance.OnDebug;
+            @Debug.canceled += instance.OnDebug;
+            @BuildModShotGun.started += instance.OnBuildModShotGun;
+            @BuildModShotGun.performed += instance.OnBuildModShotGun;
+            @BuildModShotGun.canceled += instance.OnBuildModShotGun;
+            @BuildPiercing.started += instance.OnBuildPiercing;
+            @BuildPiercing.performed += instance.OnBuildPiercing;
+            @BuildPiercing.canceled += instance.OnBuildPiercing;
+            @BuildBomb.started += instance.OnBuildBomb;
+            @BuildBomb.performed += instance.OnBuildBomb;
+            @BuildBomb.canceled += instance.OnBuildBomb;
+            @ResetBuild.started += instance.OnResetBuild;
+            @ResetBuild.performed += instance.OnResetBuild;
+            @ResetBuild.canceled += instance.OnResetBuild;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -279,6 +508,21 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
             @LookAround.started -= instance.OnLookAround;
             @LookAround.performed -= instance.OnLookAround;
             @LookAround.canceled -= instance.OnLookAround;
+            @Debug.started -= instance.OnDebug;
+            @Debug.performed -= instance.OnDebug;
+            @Debug.canceled -= instance.OnDebug;
+            @BuildModShotGun.started -= instance.OnBuildModShotGun;
+            @BuildModShotGun.performed -= instance.OnBuildModShotGun;
+            @BuildModShotGun.canceled -= instance.OnBuildModShotGun;
+            @BuildPiercing.started -= instance.OnBuildPiercing;
+            @BuildPiercing.performed -= instance.OnBuildPiercing;
+            @BuildPiercing.canceled -= instance.OnBuildPiercing;
+            @BuildBomb.started -= instance.OnBuildBomb;
+            @BuildBomb.performed -= instance.OnBuildBomb;
+            @BuildBomb.canceled -= instance.OnBuildBomb;
+            @ResetBuild.started -= instance.OnResetBuild;
+            @ResetBuild.performed -= instance.OnResetBuild;
+            @ResetBuild.canceled -= instance.OnResetBuild;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -310,5 +554,10 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
         void OnShoot(InputAction.CallbackContext context);
         void OnAim(InputAction.CallbackContext context);
         void OnLookAround(InputAction.CallbackContext context);
+        void OnDebug(InputAction.CallbackContext context);
+        void OnBuildModShotGun(InputAction.CallbackContext context);
+        void OnBuildPiercing(InputAction.CallbackContext context);
+        void OnBuildBomb(InputAction.CallbackContext context);
+        void OnResetBuild(InputAction.CallbackContext context);
     }
 }

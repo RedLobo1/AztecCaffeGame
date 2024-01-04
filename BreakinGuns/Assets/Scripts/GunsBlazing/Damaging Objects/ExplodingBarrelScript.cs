@@ -22,6 +22,8 @@ public class ExplodingBarrelScript : MonoBehaviour
 
         Explode();
         _logic.ShotEvent = false;
+        _explosion.transform.position = gameObject.transform.position;
+        _explosion.SetActive(true);
         Destroy(gameObject);
 
     }
@@ -48,8 +50,7 @@ public class ExplodingBarrelScript : MonoBehaviour
                 if(rb.gameObject.tag == "Enemy")
                 {
                     Destroy(rb.gameObject);
-                    _explosion.transform.position = gameObject.transform.position;
-                    _explosion.SetActive(true);
+
                 }
 
             }
