@@ -4990,8 +4990,10 @@ MonoBehaviour:
   _speed: 25
   _rb: {fileID: 3371716289196163515}
   _flash: {fileID: 3792545087643046458, guid: d18182c888b9f164c848ae74f6a93e9d, type: 3}
-  _smoke: {fileID: 0}
+  _regular: {fileID: 0}
+  _bomb: {fileID: 0}
   Direction: {x: 0, y: 0, z: 0}
+  Destructible: 1
   maxBounces: 0
 --- !u!50 &3371716289196163515
 Rigidbody2D:

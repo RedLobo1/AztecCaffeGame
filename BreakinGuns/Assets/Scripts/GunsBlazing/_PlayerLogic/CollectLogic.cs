@@ -9,6 +9,7 @@ public class CollectLogic : MonoBehaviour
     UIGunLogic _uiGunLogic;
     CinemachineTargetGroup _cTargetGroup;
     SpriteRenderer _spriteRenderer;
+    GameLogic _gameLogic;
     Collider2D _collider;
     Color _originalColor;
     [SerializeField]private float _invoulnerableSeconds;
@@ -16,8 +17,11 @@ public class CollectLogic : MonoBehaviour
     public WeaponPartColors weaponPartColor;
     private bool _collected;
 
-    void Awake()
+    void Start()
     {
+        _gameLogic = GameObject.Find("GameLogic").GetComponent<GameLogic>();
+        _gameLogic.Parts.Add(gameObject);
+
         GameObject UILogic = GameObject.Find("Gun-Base");
         GameObject CameraTargetGroup = GameObject.Find("TargetGroup");
 
@@ -106,6 +110,7 @@ public class CollectLogic : MonoBehaviour
     {
         yield return ColorCoroutine();
         yield return null;
+        _gameLogic.Parts.Remove(gameObject);
         Destroy(gameObject);
     }
     IEnumerator ColorCoroutine()

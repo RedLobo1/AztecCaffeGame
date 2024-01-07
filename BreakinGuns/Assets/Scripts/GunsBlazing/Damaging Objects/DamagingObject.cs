@@ -22,7 +22,6 @@ public class DamagingObject : MonoBehaviour
         if(other.collider.tag == "Player")
         {
             other.collider.GetComponent<CharacterControl2D>().Health--;
-            Destroy(gameObject);
         }
     }
 }

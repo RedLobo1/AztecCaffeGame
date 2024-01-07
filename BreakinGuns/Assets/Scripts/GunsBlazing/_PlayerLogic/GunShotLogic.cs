@@ -35,16 +35,6 @@ public class GunShotLogic : MonoBehaviour
     private void Start()
     {
 
-        /*if (bulletPrefab.GetComponent<PiercingBullet>() != null)
-        {
-            int BonusBullets = 1;
-            BulletCount += BonusBullets;
-        }
-        if (bulletPrefab.GetComponent<HomingBullet>() != null)
-        {
-            int BonusBullets = 0;
-            BulletCount += BonusBullets;
-        }*/
     }
 
     void Update()
@@ -59,7 +49,9 @@ public class GunShotLogic : MonoBehaviour
             Fire();
 
             _buildMods.BuildModShotGun = false;
-            //Todo : add other mods here
+            _buildMods.BuildPiercing = false;
+            _buildMods.BuildBomb = false;
+
             Shot = false;
             ResetShootingLogic.Invoke(this, EventArgs.Empty);
             StartCoroutine(StopTime());
@@ -77,7 +69,7 @@ public class GunShotLogic : MonoBehaviour
 
     void Fire()
     {
-        Vector3 direction = _target.position - gameObject.transform.position;
+        Vector3 direction = _target.position - transform.position;
         direction.Normalize();
         Quaternion rotation = Quaternion.LookRotation(Vector3.forward, direction);
         rotation = Quaternion.Euler(0, 0, rotation.eulerAngles.z + 90f);
@@ -86,7 +78,7 @@ public class GunShotLogic : MonoBehaviour
         for (int i = 0; i < BulletCount; i++)
         {
             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, rotation);
-            ApplyMods(bullet,chargeTime);
+            ApplyMods(bullet, chargeTime);
         }
     }
 
@@ -101,16 +93,18 @@ public class GunShotLogic : MonoBehaviour
         }
 
         // Apply piercing effect based on charge time
-        if (bullet.GetComponent<PiercingBullet>().isActiveAndEnabled == true)
+        if (_buildMods.BuildPiercing)
         {
+            bullet.GetComponent<PiercingBullet>().enabled = true;
             bullet.GetComponent<PiercingBullet>().SetPiercingTime(chargeTime);
             bullet.GetComponent<Collider2D>().isTrigger = true;
         }
 
-        // Apply homing effect
-        if (bullet.GetComponent<HomingBullet>().isActiveAndEnabled == true)
+        // Apply explosive bullet
+        if (_buildMods.BuildBomb)
         {
-            bullet.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+            bullet.GetComponent<Bullet>().Destructible = false;
+            bullet.GetComponent<BombBullet>().enabled = true;
         }
 
         // Add more mods here

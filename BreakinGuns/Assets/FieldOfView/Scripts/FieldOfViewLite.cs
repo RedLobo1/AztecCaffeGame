@@ -24,6 +24,7 @@ public class FieldOfViewLite : MonoBehaviour
 
     private void Update()
     {
+        _movementScript.PlayerSeen = false;
         var rayCount = 50;
         var angle = startingAngle;
         var angleIncrease = fov / rayCount;
@@ -47,9 +48,12 @@ public class FieldOfViewLite : MonoBehaviour
                 if (rayCastHitDetection.collider.gameObject.tag == "Player")
                 {
                     _movementScript.LastPlayerLocation = rayCastHitDetection.collider.gameObject.transform.position;
-                    _movementScript.StopMovement = false;
-                    //Debug.DrawLine(transform.position,_movementScript.LastPlayerLocation,Color.green);
-                   // Debug.Log("Player Spotted");
+                    _movementScript.PlayerSeen = true;
+                }
+
+                if (rayCastHitDetection.collider.gameObject.tag == "LadderEntry" && _movementScript.PlayerSeen == false)
+                {
+                    _movementScript.LastPlayerLocation = rayCastHitDetection.collider.gameObject.transform.position;
                 }
 
                 DetectionVertex = rayCastHitDetection.point;
@@ -65,7 +69,7 @@ public class FieldOfViewLite : MonoBehaviour
         {
                 Vector3 ShootVertex;
                 var rayCastHitShooting = Physics2D.Raycast(origin, UtilsClass.GetVectorFromAngle(angle), shootDistance, layerMask);
-                Debug.DrawLine(origin, rayCastHitShooting.point,Color.red);
+                //Debug.DrawLine(origin, rayCastHitShooting.point,Color.red);
                 if (rayCastHitShooting.collider == null)
                 {
                     ShootVertex = origin + UtilsClass.GetVectorFromAngle(angle) * shootDistance;

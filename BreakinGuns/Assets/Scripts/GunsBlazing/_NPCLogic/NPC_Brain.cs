@@ -5,8 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class NPC_Brain : MonoBehaviour
 {
-    private bool _shouldDestroy = false;
+    public event System.Action OnEnemyDeath;
 
+    private bool _shouldDestroy = false;
+    [SerializeField] private GameObject[] _spawnPiece;
     // Boolean property with getter and setter
     public bool ShouldDestroy
     {
@@ -17,10 +19,15 @@ public class NPC_Brain : MonoBehaviour
             if (_shouldDestroy)
             {
                 // Destroy the GameObject when the property is set to true
+                int random = Random.Range(0, 3);
+                Instantiate(_spawnPiece[random], transform.position, Quaternion.identity);
+                Debug.Log("Enemy should destroy and invoke OnEnemyDeath.");
+                OnEnemyDeath?.Invoke();
                 Destroy(gameObject);
             }
         }
     }
+
     void Start()
     {
         
@@ -39,8 +46,8 @@ public class NPC_Brain : MonoBehaviour
                 if (collision.gameObject.GetComponent<CharacterControl2D>() == null) return;
                 if (collision.gameObject.GetComponent<CharacterControl2D>().Invincible == false)
                 {
-                collision.gameObject.GetComponent<CharacterControl2D>().Health--;
-                Debug.Log($"A karakter élete: {collision.gameObject.GetComponent<CharacterControl2D>().Health}");
+                //collision.gameObject.GetComponent<CharacterControl2D>().Health--;
+                //Debug.Log($"A karakter élete: {collision.gameObject.GetComponent<CharacterControl2D>().Health}");
                 collision.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(15f, 15f), ForceMode2D.Impulse);
                 }
         }

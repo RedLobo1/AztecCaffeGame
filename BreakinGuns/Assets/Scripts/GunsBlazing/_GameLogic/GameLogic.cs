@@ -6,8 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class GameLogic : MonoBehaviour
 {
-    //public event EventHandler ImpactEvent;
-    public GameObject Neni;
+    //make a list of all the parts
+    public List<GameObject> Parts;
+
     [SerializeField] float _shakeIntensity, _time;
     private bool _shotEvent;
     public bool ShotEvent
@@ -15,19 +16,20 @@ public class GameLogic : MonoBehaviour
         get { return _shotEvent; }
         set 
         { 
-
           ShakeLogic.Instance.ShakeCameraUpdated(_shakeIntensity, _time);
           _shotEvent = value;
         }
     }
     void Awake()
     {
+        Parts = new List<GameObject>();
         Cursor.visible = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         /*if (Input.GetKeyDown(KeyCode.L))
         {
             //SceneManager.LoadScene(0);

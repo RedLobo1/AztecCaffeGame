@@ -28,6 +28,7 @@ public class CharacterControl2D : MonoBehaviour
     public bool CanShoot;
     public bool Aiming;
     public bool StopTime;
+    public bool TriggerBomb;
 
     // Health
     public bool Invincible;
@@ -125,8 +126,11 @@ public class CharacterControl2D : MonoBehaviour
         if (PlayerInputMaster.Player.Aim.triggered)
         {
             Aiming = !Aiming;
+            TriggerBomb = !TriggerBomb;
+
             if (Aiming)
             {
+                
                 Time.timeScale = _timeSlowScale;
                 Time.fixedDeltaTime = Time.timeScale * .02f;
             }
@@ -143,6 +147,7 @@ public class CharacterControl2D : MonoBehaviour
             _rb.velocity = Vector2.zero;
             _rb.AddForce(_dashDir * -2, ForceMode2D.Impulse);
             Aiming = false;
+            TriggerBomb = false;
             GunLogic.Shot = true;
             GameLogic.ShotEvent = true;
         }
@@ -159,6 +164,7 @@ public class CharacterControl2D : MonoBehaviour
 
         if (PlayerInputMaster.Player.Shoot.triggered && _dashing)
         {
+            Debug.Log("Dash");
             CalculateDirection();
             _rb.velocity = Vector2.zero;
             _rb.AddForce(_dashDir, ForceMode2D.Impulse);

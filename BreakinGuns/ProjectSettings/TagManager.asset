@@ -15,6 +15,10 @@ TagManager:
   - Stock
   - Sight
   - Mouse
+  - Ground
+  - LadderTop
+  - LadderEntry
+  - Saw
   layers:
   - Default
   - TransparentFX
@@ -29,9 +33,9 @@ TagManager:
   - RayCheck
   - Ladder
   - EnemyWeakSpot
-  - 
-  - 
-  - 
+  - Enemy
+  - LadderEntry
+  - LadderTop
   - 
   - 
   - 

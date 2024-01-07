@@ -22,8 +22,7 @@ public class ExplodingBarrelScript : MonoBehaviour
 
         Explode();
         _logic.ShotEvent = false;
-        _explosion.transform.position = gameObject.transform.position;
-        _explosion.SetActive(true);
+        Instantiate(_explosion,transform.position,Quaternion.identity);
         Destroy(gameObject);
 
     }
