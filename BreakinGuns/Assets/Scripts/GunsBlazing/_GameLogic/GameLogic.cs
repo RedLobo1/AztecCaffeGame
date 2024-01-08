@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class GameLogic : MonoBehaviour
 {
-    //make a list of all the parts
+    private InputMaster master;
     public List<GameObject> Parts;
 
     [SerializeField] float _shakeIntensity, _time;
@@ -24,21 +24,28 @@ public class GameLogic : MonoBehaviour
     {
         Parts = new List<GameObject>();
         Cursor.visible = false;
+        master = new InputMaster();
+    }
+
+    private void OnEnable()
+    {
+        master.Enable();
+    }
+    private void OnDisable()
+    {
+        master.Disable();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-        /*if (Input.GetKeyDown(KeyCode.L))
+        if (master.Player.Debug.triggered)
         {
-            //SceneManager.LoadScene(0);
-            Instantiate(Neni);
-        }
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
+            CollectedExtraParts.Blue = 3;
+            CollectedExtraParts.Red = 3;
+            CollectedExtraParts.Green = 3;
             SceneManager.LoadScene(0);
-        }*/
+        }
 
     }
 }

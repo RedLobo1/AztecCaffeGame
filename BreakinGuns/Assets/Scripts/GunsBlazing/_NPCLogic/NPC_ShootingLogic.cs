@@ -26,8 +26,14 @@ public class NPC_ShootingLogic : MonoBehaviour
     private void Start()
     {
         _timer = _maxTime;
-        //set for target in scene based on string
+        // Set the target using GameObject.Find
         target = GameObject.Find("MainCharacter");
+
+        // Ensure that the target is found
+        if (target == null)
+        {
+            Debug.LogError("Target not found. Make sure there is a GameObject named 'MainCharacter' in the scene.");
+        }
 
         firePoint = transform;
         StartCoroutine(ShootRoutine());

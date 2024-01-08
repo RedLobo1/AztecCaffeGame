@@ -13,6 +13,8 @@ public class Bullet : MonoBehaviour
     [SerializeField] public Vector3 Direction;
 
     public bool Destructible = true;
+    public bool CollidedWEnemy;
+
     //public TimeBrain Brain;
 
     public int maxBounces = 2; // Set the maximum number of bounces
@@ -48,7 +50,7 @@ public class Bullet : MonoBehaviour
     void FixedUpdate()
     {
         Vector2 forwardVector =  transform.rotation * Vector2.right;
-        _rb.velocity = (forwardVector * _speed);
+        _rb.AddForce(forwardVector * _speed);
         //_rb.MovePosition(forwardVector * Time.deltaTime);
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -58,12 +60,18 @@ public class Bullet : MonoBehaviour
 
         if (collision.gameObject.tag == "Wall")
         {
+            Debug.Log("Wall hit");
             bounceCount++;
             // Check if the maximum number of bounces is reached
             if (bounceCount >= maxBounces && Destructible)
             {
                 Destroy(gameObject);
             }
+        }
+
+        if (collision.gameObject.tag == "Enemy")
+        {
+            CollidedWEnemy = true;
         }
     }
 

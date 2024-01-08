@@ -19,7 +19,7 @@ public class DamagingObject : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if(other.collider.tag == "Player")
+        if(other.collider.tag == "Player" && other.gameObject.layer == 6)
         {
             other.collider.GetComponent<CharacterControl2D>().Health--;
         }

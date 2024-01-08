@@ -16,7 +16,7 @@ public class KnockBack : MonoBehaviour
         if (other.gameObject.tag == "Enemy")
         {
             other.rigidbody.velocity = Vector2.zero;
-            other.rigidbody.AddForce(_rb.velocity * 5, ForceMode2D.Impulse);
+            other.rigidbody.AddForce(_rb.velocity * 10, ForceMode2D.Impulse);
         }
 
     }

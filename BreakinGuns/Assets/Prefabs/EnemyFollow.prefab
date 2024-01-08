@@ -540,7 +540,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74b6d6a2ad607004597a0f4b8281be75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NpcMovementScript: {fileID: 0}
+  NpcMovementScript: {fileID: 5440657753070051152}
 --- !u!1 &6720740537659041812
 GameObject:
   m_ObjectHideFlags: 0
@@ -586,15 +586,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c641244852bd92741b109d64284bc668, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  accuracy: 0.67
+  accuracy: 0.43
   reloadingSpeed: 2
-  shotCount: 3
+  shotCount: 2
   firePoint: {fileID: 6932148536878563552}
   bulletPrefab: {fileID: 9085043580989610309, guid: 5a7319f454c259b40b447446ea019185, type: 3}
   target: {fileID: 0}
   CanShoot: 0
   _timer: 0
-  _maxTime: 0
+  _maxTime: 3
 --- !u!1 &8371723204741337096
 GameObject:
   m_ObjectHideFlags: 0
@@ -638,8 +638,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5145444876444437646}
   - component: {fileID: 7361517487311612761}
-  - component: {fileID: 2319994163697576092}
   - component: {fileID: 4382583608694062593}
+  - component: {fileID: 2319994163697576092}
   m_Layer: 0
   m_Name: American Gun Sprites_1
   m_TagString: Untagged
@@ -655,13 +655,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8488305523559803536}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.092370614, z: 0, w: 0.9957247}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.01, y: -0.042, z: -0.007}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 6932148536878563552}
-  m_LocalEulerAnglesHint: {x: 0, y: 10.6, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7361517487311612761
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -714,18 +714,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2319994163697576092
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8488305523559803536}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df07b46b847db1f4288157ba3385008c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &4382583608694062593
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -740,6 +728,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mouse: 0
   Target: {fileID: 0}
+--- !u!114 &2319994163697576092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8488305523559803536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df07b46b847db1f4288157ba3385008c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8842946236109258988
 GameObject:
   m_ObjectHideFlags: 0
@@ -1142,7 +1142,7 @@ PrefabInstance:
       objectReference: {fileID: 2596604271747317194}
     - target: {fileID: 4002208854908979904, guid: 7b822851617268c49b9f9e93e2d5b0e0, type: 3}
       propertyPath: _flollowSpeed
-      value: 200
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4002208854908979904, guid: 7b822851617268c49b9f9e93e2d5b0e0, type: 3}
       propertyPath: _deathExplosion
@@ -1156,10 +1156,18 @@ PrefabInstance:
       propertyPath: _speedMultiplier
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 4002208854908979904, guid: 7b822851617268c49b9f9e93e2d5b0e0, type: 3}
+      propertyPath: _specialStateLayer.m_Bits
+      value: 192
+      objectReference: {fileID: 0}
     - target: {fileID: 4248289472741407693, guid: 7b822851617268c49b9f9e93e2d5b0e0, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5261915605188338225, guid: 7b822851617268c49b9f9e93e2d5b0e0, type: 3}
+      propertyPath: _BaseKill
+      value: 
+      objectReference: {fileID: 8371723204741337096}
     - target: {fileID: 5261915605188338225, guid: 7b822851617268c49b9f9e93e2d5b0e0, type: 3}
       propertyPath: _spawnPiece.Array.size
       value: 3
@@ -1215,6 +1223,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1184461413043282315, guid: 7b822851617268c49b9f9e93e2d5b0e0, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2713090326088781821}
+    - targetCorrespondingSourceObject: {fileID: 1184461413043282315, guid: 7b822851617268c49b9f9e93e2d5b0e0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3774489196715404948}
   m_SourcePrefab: {fileID: 100100000, guid: 7b822851617268c49b9f9e93e2d5b0e0, type: 3}
 --- !u!114 &3822921132863338401 stripped
 MonoBehaviour:
@@ -1266,3 +1277,16 @@ MonoBehaviour:
   - {fileID: 8842946236109258988}
   - {fileID: 3903623317991301386}
   _armor: 3
+--- !u!114 &3774489196715404948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7817025987407311899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28c66c6ced2ad2f4f877782800f2c5f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NpcMovementScript: {fileID: 5440657753070051152}

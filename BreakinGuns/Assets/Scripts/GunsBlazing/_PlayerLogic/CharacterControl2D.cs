@@ -33,7 +33,11 @@ public class CharacterControl2D : MonoBehaviour
     // Health
     public bool Invincible;
     private bool _dead;
-    private int _health = 2;
+    private int _health = 3;
+
+    private Color _colorRed = Color.red;
+    private Color _colorGreen = Color.green;
+    private Color _originalColor = Color.white;
 
     // Properties for encapsulation
     public int Health
@@ -41,24 +45,37 @@ public class CharacterControl2D : MonoBehaviour
         get { return _health; }
         set
         {
+
+            Invincible = true;
+            if (value < _health)
+            {
+                StartCoroutine(MakeCharacterWhiteAndInvincible(_colorRed));
+                _originalColor.g -= 0.25f;
+                _originalColor.b -= 0.25f;
+            }
+            else if (value > _health)
+            {
+                StartCoroutine(MakeCharacterWhiteAndInvincible(_colorGreen));
+                _originalColor.g += 0.25f;
+                _originalColor.b += 0.25f;
+            }
+
             if (_health <= 0)
             {
                 Invincible = true;
                 Dead = true;
                 return;
             }
-
-            Invincible = true;
-            StartCoroutine(MakeCharacterWhiteAndInvincible());
             _health = value;
+
         }
     }
 
-    private IEnumerator MakeCharacterWhiteAndInvincible()
+    private IEnumerator MakeCharacterWhiteAndInvincible(Color color)
     {
-        SRenderer.color = Color.red;
+        SRenderer.color = color;
         yield return new WaitForSeconds(_invincibleTime);
-        SRenderer.color = Color.white;
+        SRenderer.color = _originalColor;
         Invincible = false;
     }
 

@@ -128,13 +128,13 @@ MonoBehaviour:
   GameLogic: {fileID: 0}
   MousePosition: {fileID: 0}
   SRenderer: {fileID: 3310748534101943643}
-  CanShoot: 0
-  _dashDistance: 5
-  _timeSlowScale: 0.2
   _dashMultiplier: 5
+  _timeSlowScale: 0.2
   _invincibleTime: 0
+  CanShoot: 0
   Aiming: 0
   StopTime: 0
+  TriggerBomb: 0
   Invincible: 0
 --- !u!114 &412062634049470646
 MonoBehaviour:
@@ -417,8 +417,8 @@ MonoBehaviour:
   Shot: 0
   Ready: 0
   _explosionStrength: 50
+  _buildMods: {fileID: 0}
   _gunVisual: {fileID: 4953621636581847}
-  _bullet: {fileID: 9085043580989610309, guid: a7ec8e76a7f70954d843d539b46dfc74, type: 3}
   Control: {fileID: 0}
   _target: {fileID: 0}
   Parts:
@@ -426,6 +426,14 @@ MonoBehaviour:
   - {fileID: 8548363600417025106, guid: 21f21b0e2fb12714dac360bbc93565e5, type: 3}
   - {fileID: 5151571841075365143, guid: 7eb00ddc577979f4fb87ba575988307c, type: 3}
   _stopTime: 0
+  firePoint: {fileID: 0}
+  bulletPrefab: {fileID: 0}
+  shotgunSpreadAngle: 15
+  chargeTime: 2
+  homingForce: 5
+  rapidFireRate: 0.1
+  BulletCount: 1
+  isRapidFiring: 0
 --- !u!1 &5083228986880223107
 GameObject:
   m_ObjectHideFlags: 0
@@ -560,8 +568,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1922771125
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 1413389664, guid: c2d24e78750cb7b4ba19ca18ef15a440, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

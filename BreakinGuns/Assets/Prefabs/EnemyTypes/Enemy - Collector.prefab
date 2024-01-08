@@ -225,6 +225,7 @@ MonoBehaviour:
   - {fileID: 5151571841075365143, guid: 7eb00ddc577979f4fb87ba575988307c, type: 3}
   - {fileID: 8548363600417025106, guid: 21f21b0e2fb12714dac360bbc93565e5, type: 3}
   - {fileID: 8368699348086830274, guid: 672eca1349a346d42873361237f95a4b, type: 3}
+  _BaseKill: {fileID: 6146022522938198461}
 --- !u!114 &4353798115202268117
 MonoBehaviour:
   m_ObjectHideFlags: 0

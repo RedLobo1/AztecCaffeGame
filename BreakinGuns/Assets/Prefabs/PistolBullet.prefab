@@ -275,13 +275,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec488edfbf8405545af7797c4fc8cc3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 150
+  _speed: 250
   _rb: {fileID: 3371716289196163515}
   _flash: {fileID: 3792545087643046458, guid: d18182c888b9f164c848ae74f6a93e9d, type: 3}
   _regular: {fileID: 4633992728322010723}
   _bomb: {fileID: 3321581736570189807}
   Direction: {x: 0, y: 0, z: 0}
   Destructible: 1
+  CollidedWEnemy: 0
   maxBounces: 2
 --- !u!50 &3371716289196163515
 Rigidbody2D:
@@ -295,7 +296,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
-  m_Mass: 1
+  m_Mass: 1.0099875
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 1
@@ -332,7 +333,7 @@ CircleCollider2D:
     m_Bits: 512
   m_ForceReceiveLayers:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 520
   m_ContactCaptureLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -369,6 +370,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f07d5f0bd621f464cac32246b684ff20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _bulletLogic: {fileID: 4836936633622523184}
+  _rbRigidbody2D: {fileID: 3371716289196163515}
 --- !u!96 &7177000499530113914
 TrailRenderer:
   serializedVersion: 3
@@ -518,7 +521,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03820374584072a4e9399920cc40a232, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosionStrength: 50
+  _explosionStrength: 5
   _radius: 10
   _logic: {fileID: 0}
   _explosion: {fileID: 3080813966927633796, guid: f23bf09a332780d45b075b7202f07537, type: 3}

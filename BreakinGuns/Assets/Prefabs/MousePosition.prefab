@@ -70,8 +70,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1922771125
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 2367663fe3559124695b34b910e2bab1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -154,8 +154,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1922771125
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 10915, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 0, g: 1, b: 0.49419212, a: 1}
@@ -269,6 +269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a142cc8dcec6cc4e9ebd49d6afc3652, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _moveSpeed: 10
 --- !u!114 &5473571053055714059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -282,8 +283,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 3
+  MoveSpeed: 25
   targetObject: {fileID: 0}
   _control: {fileID: 0}
+  _unlimitedMouse: 0
 --- !u!114 &4967084170149780149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -297,5 +300,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _crosshair: {fileID: 36609309962168424}
+  _laserAiming: {fileID: 0}
   _dash: {fileID: 1156687272734436995}
   _control: {fileID: 0}

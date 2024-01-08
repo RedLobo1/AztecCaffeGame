@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using TMPro.EditorUtilities;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -61,7 +60,7 @@ public class NPC_MovementScript : MonoBehaviour
     private void Update()
     {
         _collider2D.forceReceiveLayers = _specialStateLayer;
-        if (Voulnerable == true){ currentState = EnemyState.Stunned;}
+        //if (Voulnerable == true)renderer
         switch (currentState)
         {
             case EnemyState.Idle:
@@ -151,16 +150,16 @@ public class NPC_MovementScript : MonoBehaviour
         if (other.gameObject.tag == "Saw" && Voulnerable)
         {
             Instantiate(_deathExplosion, transform.position, Quaternion.identity);
-            Destroy(gameObject);
+            NPC_Brain brain = GetComponent<NPC_Brain>();
+            brain.ShouldDestroy = true;
         }
 
         
     }
-
     private IEnumerator StunnedTimer()
     {
         currentState = EnemyState.Stunned;
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(2);
         currentState = EnemyState.Idle;
     }
     

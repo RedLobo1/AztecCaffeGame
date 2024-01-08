@@ -4902,7 +4902,7 @@ GameObject:
   - component: {fileID: 4664657942721170285}
   m_Layer: 7
   m_Name: EnemyBullet
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4994,6 +4994,7 @@ MonoBehaviour:
   _bomb: {fileID: 0}
   Direction: {x: 0, y: 0, z: 0}
   Destructible: 1
+  CollidedWEnemy: 0
   maxBounces: 0
 --- !u!50 &3371716289196163515
 Rigidbody2D:

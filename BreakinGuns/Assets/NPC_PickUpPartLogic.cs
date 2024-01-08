@@ -30,6 +30,7 @@ public class NPC_PickUpPartLogic : MonoBehaviour
         _nullPart = new GameObject();
         _pickedUpPart = _nullPart;
         PickUp = DropPoint;
+        DropPoint = GameObject.Find("DropPoint");
 
         if (_gameLogic.Parts.Count > 0)
         {
@@ -45,6 +46,12 @@ public class NPC_PickUpPartLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (_pickedUp == true || PickUp == null)
+        {
+            _destination.target = DropPoint.transform;
+        }
+
         if (_gameLogic.Parts.Count > 0 && !_pickedUp)
         {
             _startLooking = true;
@@ -59,14 +66,9 @@ public class NPC_PickUpPartLogic : MonoBehaviour
             _destination.target = PickUp.transform;
         }
 
-        if (_pickedUp == true)
-        {
-            _destination.target = DropPoint.transform;
-        }
-
         if (_hit) return;
 
-        _pickedUpPart.transform.position = transform.position /*- new Vector3(0,1,0)*/;
+        _pickedUpPart.transform.position = transform.position - new Vector3(0,-0.5f,0);
 
     }
 

@@ -33,7 +33,7 @@ public class CollectLogic : MonoBehaviour
         _collider = GetComponent<Collider2D>(); 
 
         StartCoroutine(Invoulnerable());
-        _cTargetGroup.AddMember(transform, 2, 0);
+        _cTargetGroup.AddMember(transform, 1, 0);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -116,7 +116,7 @@ public class CollectLogic : MonoBehaviour
     IEnumerator ColorCoroutine()
     {
         
-        Time.timeScale = 0f;
+        //Time.timeScale = 0f;
         _spriteRenderer.color = Color.white;
         yield return new WaitForSecondsRealtime(0.1f);
         _spriteRenderer.color = _originalColor;

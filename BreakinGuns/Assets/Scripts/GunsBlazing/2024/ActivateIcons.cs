@@ -26,9 +26,9 @@ public class ActivateIcons : MonoBehaviour
 
     void Update()
     {
-        SetColor(PurpleSR,Color.magenta, _buildMods.BuildModShotGun);
-        SetColor(YellowSR, Color.yellow, _buildMods.BuildPiercing);
-        SetColor(BrownSR, Color.red, _buildMods.BuildBomb);
+        SetColor(PurpleSR,Color.white, _buildMods.BuildModShotGun);
+        SetColor(YellowSR, Color.white, _buildMods.BuildPiercing);
+        SetColor(BrownSR, Color.white, _buildMods.BuildBomb);
         //TODO> implement other colors
 
     }

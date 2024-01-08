@@ -1,7 +1,10 @@
+using Cinemachine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 
 public class NPC_Brain : MonoBehaviour
 {
@@ -9,6 +12,8 @@ public class NPC_Brain : MonoBehaviour
 
     private bool _shouldDestroy = false;
     [SerializeField] private GameObject[] _spawnPiece;
+    [SerializeField] private GameObject _BaseKill;
+    CinemachineTargetGroup _cTargetGroup;
     // Boolean property with getter and setter
     public bool ShouldDestroy
     {
@@ -21,22 +26,22 @@ public class NPC_Brain : MonoBehaviour
                 // Destroy the GameObject when the property is set to true
                 int random = Random.Range(0, 3);
                 Instantiate(_spawnPiece[random], transform.position, Quaternion.identity);
-                Debug.Log("Enemy should destroy and invoke OnEnemyDeath.");
-                OnEnemyDeath?.Invoke();
-                Destroy(gameObject);
+                Destroy(_BaseKill);
             }
         }
     }
 
-    void Start()
+    private void Awake()
     {
-        
+        GameObject CameraTargetGroup = GameObject.Find("TargetGroup");
+        _cTargetGroup = CameraTargetGroup.GetComponent<CinemachineTargetGroup>();
+        _cTargetGroup.AddMember(transform, 2, 0);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnDestroy()
     {
-        
+        Debug.Log("Enemy should destroy and invoke OnEnemyDeath.");
+        OnEnemyDeath?.Invoke();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -46,8 +51,6 @@ public class NPC_Brain : MonoBehaviour
                 if (collision.gameObject.GetComponent<CharacterControl2D>() == null) return;
                 if (collision.gameObject.GetComponent<CharacterControl2D>().Invincible == false)
                 {
-                //collision.gameObject.GetComponent<CharacterControl2D>().Health--;
-                //Debug.Log($"A karakter élete: {collision.gameObject.GetComponent<CharacterControl2D>().Health}");
                 collision.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(15f, 15f), ForceMode2D.Impulse);
                 }
         }

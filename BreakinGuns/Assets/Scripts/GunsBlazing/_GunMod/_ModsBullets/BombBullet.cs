@@ -30,7 +30,7 @@ public class BombBullet : MonoBehaviour
 
     private void Update()
     {
-        if (_characterControl.TriggerBomb)
+        if (_characterControl.TriggerBomb || _bulletLogic.CollidedWEnemy)
         {
             Explode();
             Instantiate(_explosion,transform.position,Quaternion.identity);
@@ -61,7 +61,8 @@ public class BombBullet : MonoBehaviour
                 if (rb.gameObject.tag == "Enemy")
                 {
                     _characterControl.TriggerBomb = false;
-                    Destroy(rb.gameObject);
+                    if(rb.gameObject.GetComponent<NPC_Brain>() == null) return;
+                    rb.gameObject.GetComponent<NPC_Brain>().ShouldDestroy = true;
                 }
 
             }
